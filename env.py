@@ -33,6 +33,7 @@ class VokramEnv(gym.Env):
         self.green_width = None
 
         self.current_step = 0
+        self.action_array = [(5+j*10, 5+(i*10)) for i in range(6) for j in range(8)]
 
     def get_box(self):
         size = self.size
@@ -79,7 +80,7 @@ class VokramEnv(gym.Env):
         inter_area = self.compute_intersect_area(red_rect, green_rect)
         red_area = (ry + rh) * (rx + rw)
         green_area = (gy + gh) * (gx + gw)
-        if inter_area > red_area * 1/8 or inter_area > green_area * 1/8:
+        if inter_area > 0:
             return True
         else:
             return False
@@ -121,9 +122,10 @@ class VokramEnv(gym.Env):
     def process_action(action):
         # 80 x 60 = 4800 pixels, 
         # action 0~47 = 48 actions
-        # 0 = [5, 5]
-        # 1 = [20, 10]
-        x, y = 
+        x, y = self.action_array[action]
+        # ? case 1 : 초록, 빨간 상자가 분리되어 있는 경우
+        # ? case 2 : 초록, 빨간 상자가 겹쳐 있는 경우
+
 
     def init_render(self):
         pygame.init()

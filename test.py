@@ -47,8 +47,9 @@ def check_much_area(red_rect, green_rect):
     clip = red_rect.clip(green_rect)
     clip_area = clip.w * clip.h
 
-    if clip_area > red_rect.w * red_rect.h * 1/8 or \
-        clip_area > green_rect.w * green_rect.h:
+    # red_rect.w * red_rect.h * 1/8
+    # green_rect.w * green_rect.h
+    if clip_area > 0:
         print("There are much clip area")
         return True
     else:
